@@ -1,0 +1,49 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  height: 100vh; /* Use viewport height to make the layout take up the entire screen */
+}
+
+/* Sidebar styles */
+aside {
+  flex: 0 0 25%; /* Sidebar takes up 25% of the available space */
+  /* background-color: #075e54; */
+  background-color: #202c33;
+  overflow-y: auto; /* Allow sidebar content to scroll if it exceeds the height */
+  position: relative;
+  min-width: 250px;
+  max-width: 300px;
+}
+
+/* Chat window styles */
+section {
+  flex: 1; /* Chat window takes up the remaining space */
+  padding: 20px;
+  overflow-y: auto; /* Allow chat content to scroll if it exceeds the height */
+}
+
+/* Utilities */
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.d-f {
+  display: flex;
+}
+
+.g-1 {
+  gap: 0.3rem;
+}

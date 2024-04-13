@@ -1,0 +1,80 @@
+.selected-chat {
+  position: relative;
+}
+
+.selected-chat_action {
+  /* background-color: #202c33; */
+  background-color: #161d22;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.2rem 0.5rem;
+}
+
+.selected-chat_action input {
+  background-color: #171c1f;
+  font-size: 1rem;
+  color: aliceblue;
+  border: 1px solid #171c1f;
+  outline-color: aliceblue !important;
+  outline-width: 1px !important ;
+}
+
+.selected-chat_action button {
+  width: fit-content;
+  background-color: #075e54;
+}
+
+.selected-chat_action button:hover {
+  background-color: #07443d;
+}
+
+.selected-chat_action button img {
+  height: 1.5rem;
+}
+
+/* ChatList */
+
+.chat-list {
+  color: white;
+  max-height: calc(100vh - 8rem);
+  overflow-y: scroll;
+}
+
+.chat-list::-webkit-scrollbar {
+  width: 3px; /* width of the scrollbar */
+}
+
+.chat-list::-webkit-scrollbar-track {
+  background: #333; /* color of the track */
+}
+
+.chat-list::-webkit-scrollbar-thumb {
+  background: #888; /* color of the thumb */
+  border-radius: 4px;
+}
+
+.chat-list::-webkit-scrollbar-thumb:hover {
+  background: #555; /* color of the thumb on hover */
+}
+
+.chat-list ul {
+  list-style: none;
+}
+
+.chat-list ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem;
+  cursor: pointer;
+}
+
+.chat-list ul li:hover {
+  background-color: #535b60;
+}
+
+.chat-list ul li img {
+  height: 40px;
+}

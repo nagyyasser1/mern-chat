@@ -1,0 +1,11 @@
+/* Style for individual chat items in the sidebar */
+.chat-item {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Style for selected chat */
+.selected-chat {
+  background-color: #0b141a;
+  padding: 20px;
+}

@@ -1,0 +1,44 @@
+.users-list {
+  color: white;
+  max-height: calc(100vh - 6rem);
+  overflow-y: scroll;
+  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+}
+
+.users-list::-webkit-scrollbar {
+  width: 3px; /* width of the scrollbar */
+}
+
+.users-list::-webkit-scrollbar-track {
+  background: #333; /* color of the track */
+}
+
+.users-list::-webkit-scrollbar-thumb {
+  background: #888; /* color of the thumb */
+  border-radius: 4px;
+}
+
+.users-list::-webkit-scrollbar-thumb:hover {
+  background: #555; /* color of the thumb on hover */
+}
+
+.users-list ul {
+  list-style: none;
+}
+
+.users-list ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem;
+  cursor: pointer;
+}
+
+.users-list ul li:hover {
+  background-color: #535b60;
+}
+
+.users-list ul li img {
+  height: 40px;
+}
