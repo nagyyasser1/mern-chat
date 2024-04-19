@@ -9,6 +9,8 @@ import { socket } from "../../socket";
 
 const Layout = () => {
   const [isSearch, setIsSearch] = useState(false);
+  const [chatId, setChatId] = useState("");
+  const [reciever, setReciever] = useState(null);
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [chats, setChats] = useState([]);
 
@@ -33,17 +35,18 @@ const Layout = () => {
     };
   }, []);
 
-  console.log("isConnected:", isConnected);
-  console.log(chats);
-
   return (
     <main>
       <aside>
         <Search setIsSearch={setIsSearch} />
-        {isSearch ? <UsersList /> : <ChatList chats={chats} />}
+        {isSearch ? (
+          <UsersList setReciever={setReciever} />
+        ) : (
+          <ChatList chats={chats} setChatId={setChatId} />
+        )}
         <Profile />
       </aside>
-      <SelectedChat />
+      <SelectedChat chatId={chatId} reciever={reciever} />
     </main>
   );
 };

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getAllUsers } from "../../api/users.api";
 import "./users.css";
 
-const UsersList = () => {
+const UsersList = ({ setReciever }) => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -13,17 +13,15 @@ const UsersList = () => {
     findAllUsers();
   }, []);
 
+  const handleSelect = (user) => {
+    setReciever(user);
+  };
+
   return (
     <div className="users-list">
       <ul>
         {users.map((user) => (
-          <li key={user._id}>
-            <img src={user?.profilePic} />
-            <p>{user.username}</p>
-          </li>
-        ))}
-        {users.map((user) => (
-          <li key={user._id}>
+          <li key={user._id} onClick={(e) => handleSelect(user)}>
             <img src={user?.profilePic} />
             <p>{user.username}</p>
           </li>

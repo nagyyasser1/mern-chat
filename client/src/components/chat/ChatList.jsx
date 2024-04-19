@@ -1,90 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./chat.css";
 
-const ChatList = ({ chats }) => {
-  console.log("chats", chats);
+const ChatList = ({ chats, setChatId }) => {
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
-  console.log("single", chats[1]);
+  const handleSelect = (chatId) => {
+    setChatId(chatId);
+  };
 
   return (
     <div className="chat-list">
       <ul>
         {chats.map((chat) => (
-          <li key={chat._id}>
-            <p>{chat.messages[0]?.message}</p>
-            {/* <p>{chat.lastMessage}</p> */}
+          <li key={chat._id} onClick={() => handleSelect(chat._id)}>
+            {chat.participants?.map((participant) => {
+              if (participant._id === userInfo._id) return null;
+
+              return (
+                <div key={participant._id} id="chat-list-content">
+                  <img
+                    className="chat-list-content_img"
+                    src={participant.profilePic}
+                  />
+                  <div id="chat-list-content_info">
+                    <p>{participant.username}</p>
+                    <p>{chat.messages[0]?.message}</p>
+                  </div>
+                </div>
+              );
+            })}
           </li>
         ))}
       </ul>
     </div>
   );
 };
-
-const ex1 = [
-  {
-    _id: "6613a76ecaea224597b91ff8",
-    messages: [
-      {
-        _id: "6613a7a1caea224597b91fff",
-        message: "heloo",
-        senderId: "660e90fbb4bdba404362b6bf",
-        receiverId: "660e90fbb4bdba404362b6bf",
-        createdAt: "2024-04-08T08:15:29.482Z",
-        updatedAt: "2024-04-08T08:15:29.482Z",
-      },
-    ],
-    participants: [
-      {
-        _id: "660e90fbb4bdba404362b6bf",
-        fullName: "nagy yasser ahmed fathy",
-        gender: "male",
-        username: "nagyy8751",
-        password: "ddd",
-        profilePic: "https://avatar.iran.liara.run/public/boy?use",
-        createdAt: "2024-04-04T11:37:31.375Z",
-        updatedAt: "2024-04-04T11:37:31.375Z",
-      },
-      {
-        _id: "660e90fbb4bdba404362b6bf",
-        fullName: "nagy yasser ahmed fathy",
-        gender: "male",
-        username: "nagyy8751",
-        password: "ddd",
-        profilePic: "https://avatar.iran.liara.run/public/boy?use",
-        createdAt: "2024-04-04T11:37:31.375Z",
-        updatedAt: "2024-04-04T11:37:31.375Z",
-      },
-    ],
-    createdAt: "2024-04-08T08:14:38.301Z",
-    updatedAt: "2024-04-08T08:15:29.482Z",
-  },
-];
-
-const ex2 = [
-  {
-    _id: "6613a76ecaea224597b91ff8",
-    messages: [
-      {
-        message: "heloo",
-        createdAt: "2024-04-08T08:15:29.482Z",
-        updatedAt: "2024-04-08T08:15:29.482Z",
-      },
-    ],
-    participants: [
-      {
-        _id: "660e90fbb4bdba404362b6bf",
-        username: "nagyy8751",
-        profilePic: "https://avatar.iran.liara.run/public/boy?use",
-      },
-      {
-        _id: "660e90fbb4bdba404362b6bf",
-        username: "nagyy8751",
-        profilePic: "https://avatar.iran.liara.run/public/boy?use",
-      },
-    ],
-    createdAt: "2024-04-08T08:14:38.301Z",
-    updatedAt: "2024-04-08T08:15:29.482Z",
-  },
-];
 
 export default ChatList;

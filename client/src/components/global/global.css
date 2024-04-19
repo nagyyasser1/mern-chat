@@ -2,7 +2,9 @@
 .search {
   padding: 0.5rem;
   background-color: #232a30;
-  box-shadow: 0px 1px 6px rgba(89, 89, 89, 0.3);
+  box-shadow: 0px 1px 6px rgba(103, 103, 103, 0.3);
+  /* box-shadow: 0px 1px 6px rgba(126, 135, 126, 29.3); */
+  /* border-bottom: 1px solid rgb(181, 181, 181); */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -37,7 +39,7 @@
 }
 
 .menu-icon-container img {
-  display: none;
+  /* display: none; */
   height: 20px;
   cursor: pointer;
 }
@@ -107,4 +109,77 @@
 .profile .logoutImg {
   height: 1.5rem;
   cursor: pointer;
+}
+
+/* Message */
+
+.message-left {
+  color: black;
+  display: flex;
+  align-items: center;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  justify-content: left;
+}
+
+.message-right {
+  color: black;
+  display: flex;
+  align-items: center;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  justify-content: right;
+}
+
+.message.me {
+  background-color: #e0f2ff;
+  border: 1px solid #c7e2fa;
+}
+
+.message.them {
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.message-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.message-content-left {
+  width: fit-content;
+  padding: 0.6rem;
+  background-color: #07443d;
+  color: honeydew;
+  border-radius: 10px 10px 0px 10px;
+  display: flex;
+  justify-content: left;
+}
+.message-content-right {
+  width: fit-content;
+  padding: 0.6rem;
+  background-color: #202c33;
+  color: honeydew;
+  border-radius: 10px 10px 0px 10px;
+  display: flex;
+  justify-content: right;
+}
+
+.message-user {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.message-text {
+  font-size: 16px;
+}
+
+.message-date {
+  font-size: 12px;
+  color: #aaa;
+  margin-left: 10px;
 }

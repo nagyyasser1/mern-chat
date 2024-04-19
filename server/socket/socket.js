@@ -56,6 +56,15 @@ io.on("connection", async (socket) => {
     console.error("Error fetching conversations:", error);
   }
 
+  // Get chat by id
+  socket.on("getChat", async (chatId) => {
+    Conversation.findOne({
+      _id: chatId,
+    }).then((conversation) => {
+      socket.emit("retrievedChat", conversation);
+    });
+  });
+
   // Broadcast to other users in the same conversation when a new message is sent
   socket.on("sendMessage", async (senderId, receiverId, message) => {
     try {
@@ -72,11 +81,18 @@ io.on("connection", async (socket) => {
       const newMessage = new Message({
         senderId,
         receiverId,
-        content: message,
+        message,
         conversation: conversation._id,
       });
       await newMessage.save();
-      io.to(conversation._id.toString()).emit("message", newMessage);
+
+      if (newMessage) {
+        conversation.messages.push(newMessage._id);
+      }
+
+      await Promise.all([conversation.save(), newMessage.save()]);
+
+      io.to(conversation._id.toString()).emit("newMessage", newMessage);
     } catch (error) {
       console.error("Error sending message:", error);
     }
