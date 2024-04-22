@@ -76,6 +76,16 @@ io.on("connection", async (socket) => {
         conversation = await Conversation.create({
           participants: [senderId, receiverId],
         });
+
+        // do here
+        socket.join(conversation._id.toString());
+        // do here
+        await conversation.save();
+        Conversation.findOne({
+          _id: conversation._id,
+        }).then((conversation) => {
+          socket.emit("newChat", conversation);
+        });
       }
 
       const newMessage = new Message({
@@ -92,7 +102,11 @@ io.on("connection", async (socket) => {
 
       await Promise.all([conversation.save(), newMessage.save()]);
 
-      io.to(conversation._id.toString()).emit("newMessage", newMessage);
+      io.to(conversation._id.toString()).emit(
+        "newMessage",
+        newMessage,
+        conversation._id
+      );
     } catch (error) {
       console.error("Error sending message:", error);
     }

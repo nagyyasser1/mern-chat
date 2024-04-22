@@ -32,13 +32,14 @@ const Login = () => {
     try {
       const response: any = await login(formData);
 
-      const { token, fullName, username, email, gender, profilePic } =
+      const { token, fullName, username, email, gender, profilePic, _id } =
         response?.data;
 
       localStorage.setItem("accessToken", token);
       localStorage.setItem(
         "userInfo",
         JSON.stringify({
+          _id,
           fullName,
           username,
           email,
@@ -50,7 +51,7 @@ const Login = () => {
       dispatch(
         loginAction({
           token,
-          userInfo: { fullName, email, username, gender, profilePic },
+          userInfo: { _id, fullName, email, username, gender, profilePic },
         })
       );
 

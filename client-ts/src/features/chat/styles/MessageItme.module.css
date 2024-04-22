@@ -1,0 +1,26 @@
+.messageItem_right {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0.5rem;
+  padding: 0rem 0.5rem;
+}
+.messageItem_msg_right {
+  background-color: #202c33;
+  width: fit-content;
+  padding: 0.5rem;
+  border-radius: 5px 5px 5px 0px;
+}
+
+.messageItem_left {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+  padding: 0rem 0.5rem;
+}
+
+.messageItem_msg_left {
+  background-color: #075e54;
+  width: fit-content;
+  padding: 0.5rem;
+  border-radius: 5px 5px 0px 5px;
+}

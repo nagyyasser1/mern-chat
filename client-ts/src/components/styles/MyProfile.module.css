@@ -1,0 +1,35 @@
+.myprofile {
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.5rem 0.6rem;
+  justify-content: space-between;
+  /* background-color: #24292c; */
+  /* background-color: #292d34; */
+  background-color: #202c33;
+  border-top: 1px solid #414343;
+}
+
+.myprofile:hover {
+  background-color: #292d34;
+}
+
+.myprofile_info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.myprofile_info img {
+  height: 30px;
+}
+
+.myprofile_logout_img {
+  cursor: pointer;
+  height: 17px;
+}

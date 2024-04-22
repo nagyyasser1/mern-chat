@@ -33,7 +33,7 @@ const Signup = () => {
     try {
       // Call signup mutation with user data
       await signup(formData);
-      navigate("/login"); // Or redirect on successful signup
+      navigate("/auth/login"); // Or redirect on successful signup
     } catch (error) {
       console.error("Signup error:", error);
       // Handle signup errors (optional: display error messages)

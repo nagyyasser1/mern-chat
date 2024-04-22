@@ -10,11 +10,11 @@ const useAuth = () => {
   const userInfo = JSON.parse(localStorage.getItem("userInfo") as any);
 
   if (accessToken && userInfo) {
-    const { fullName, username, email, gender, profilePic } = userInfo;
+    const { fullName, username, email, gender, profilePic, _id } = userInfo;
     dispatch(
       loginAction({
         token: accessToken,
-        userInfo: { fullName, username, email, gender, profilePic },
+        userInfo: { _id, fullName, username, email, gender, profilePic },
       })
     );
   }

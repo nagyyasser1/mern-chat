@@ -1,0 +1,21 @@
+.chatHistory {
+  max-height: calc(100vh - 6rem);
+  overflow-y: scroll;
+}
+
+.chatHistory::-webkit-scrollbar {
+  width: 1px; /* width of the scrollbar */
+}
+
+.chatHistory::-webkit-scrollbar-track {
+  background: #333; /* color of the track */
+}
+
+.chatHistory::-webkit-scrollbar-thumb {
+  background: whitesmoke; /* color of the thumb */
+  border-radius: 4px;
+}
+
+.chatHistory::-webkit-scrollbar-thumb:hover {
+  background: #555; /* color of the thumb on hover */
+}

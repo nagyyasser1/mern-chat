@@ -12,3 +12,11 @@ export interface Pokemon {
   types: Array<{ type: { name: string } }>; // Array of Pokemon types
   // ... add more properties as needed
 }
+
+export interface User {
+  _id: string;
+  fullName: string;
+  username: string;
+  gender: number;
+  profilePic: string;
+}

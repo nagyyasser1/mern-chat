@@ -1,22 +1,24 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "../features/counter/counterSlice";
 import authReducer from "../features/auth/authSlice";
-import { pokemonApi } from "../services/pokemon";
+import chatsReducer from "../features/chat/chatSlice";
+import applicationReducer from "./applicatoinSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { authApi } from "../services/auth.service";
+import { usersApi } from "../services/users.service";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
     auth: authReducer,
+    chats: chatsReducer,
+    application: applicationReducer,
     // Add the generated reducer as a specific top-level slice
-    [pokemonApi.reducerPath]: pokemonApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
+    [usersApi.reducerPath]: usersApi.reducer,
   },
   // Adding the api middleware enables caching, invalidation, polling,
   // and other useful features of `rtk-query`.
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(pokemonApi.middleware, authApi.middleware),
+    getDefaultMiddleware().concat(authApi.middleware, usersApi.middleware),
 });
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors

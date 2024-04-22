@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../../app/store";
+import { RootState } from "../../app/store";
 
 type User = {
+  _id: string;
   fullName: string;
   username: string;
   email: string;
@@ -20,6 +21,7 @@ const initialState: AuthState = {
   isLoggedIn: false,
   token: "",
   userInfo: {
+    _id: "",
     fullName: "",
     username: "",
     email: "",
@@ -41,6 +43,7 @@ export const authSlice = createSlice({
       state.isLoggedIn = false;
       state.token = "";
       state.userInfo = {
+        _id: "",
         fullName: "",
         username: "",
         email: "",
@@ -51,8 +54,8 @@ export const authSlice = createSlice({
   },
 });
 
-export const { login, logout } = authSlice.actions;
+export const selectUserInfo = (state: RootState) => state.auth.userInfo;
 
-export const selectCount = (state: RootState) => state.counter.value;
+export const { login, logout } = authSlice.actions;
 
 export default authSlice.reducer;

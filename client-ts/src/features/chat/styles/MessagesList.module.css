@@ -1,0 +1,27 @@
+.messagesList {
+  margin-top: 10px;
+  height: calc(100vh - 18vh);
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  /* Chrome, Safari, and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.messagesList::-webkit-scrollbar {
+  width: 3px; /* width of the scrollbar */
+}
+
+.messagesList::-webkit-scrollbar-track {
+  background: #333; /* color of the track */
+}
+
+.messagesList::-webkit-scrollbar-thumb {
+  background: #888; /* color of the thumb */
+  border-radius: 4px;
+}
+
+.messagesList::-webkit-scrollbar-thumb:hover {
+  background: #555; /* color of the thumb on hover */
+}

@@ -1,0 +1,30 @@
+.chatInfo {
+  background-color: #202c33;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 1rem;
+  margin: 0px 0.3rem;
+  border-radius: 5px;
+}
+
+.chatInfo_menuImg {
+  height: 1.4rem;
+  cursor: pointer;
+  display: none;
+}
+.chatInfo_content {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.chatInfo_content img {
+  height: 30px;
+}
+
+@media (max-width: 740px) {
+  .chatInfo_menuImg {
+    display: inline;
+  }
+}

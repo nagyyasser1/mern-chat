@@ -1,0 +1,36 @@
+.chatControlls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem 0.3rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chatControlls_input {
+  background-color: #202c33;
+  font-size: 1rem;
+  color: aliceblue;
+  border: 1px solid #182c37;
+  border-radius: 5px;
+  padding: 0.6rem;
+  outline: none;
+  width: 100%;
+}
+
+.chatControlls_sendBtn {
+  cursor: pointer;
+  width: fit-content;
+  /* background-color: #075e54; */
+  /* background-color: #202c33; */
+  background-color: #152833;
+  border-radius: 0.4rem;
+  border: none;
+  padding: 0.2rem;
+}
+
+.chatControlls_sendBtn img {
+  height: 30px;
+  border-radius: 0.4rem;
+}

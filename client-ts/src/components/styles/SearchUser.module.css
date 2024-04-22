@@ -1,0 +1,23 @@
+.search {
+  padding: 0.5rem;
+  border-bottom: 1px solid #373f47;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search_img {
+  height: 17px;
+}
+
+.search_input {
+  color: white;
+  font-size: 0.9rem;
+  background-color: #232a30;
+  border: 1px solid rgb(57, 57, 57);
+  /* border: none; */
+  border-radius: 2px;
+  outline: none;
+  padding: 0.5rem;
+  width: 100%;
+}

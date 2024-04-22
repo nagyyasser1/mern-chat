@@ -1,0 +1,24 @@
+.chatItem {
+  padding: 0.6rem;
+  cursor: pointer;
+  border-bottom: 1px solid #373f47;
+  background-color: #20282e;
+  color: rgb(136, 138, 138);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.chatItem:hover {
+  background-color: #232a30;
+}
+
+.chatItem img {
+  height: 30px;
+}
+
+.chatItem_info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}

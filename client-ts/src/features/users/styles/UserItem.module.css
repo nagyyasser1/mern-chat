@@ -1,0 +1,18 @@
+.userItem {
+  padding: 0.6rem;
+  cursor: pointer;
+  border-bottom: 1px solid #373f47;
+  background-color: #20282e;
+  color: rgb(202, 200, 200);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.userItem:hover {
+  background-color: #232a30;
+}
+
+.userItem img {
+  height: 30px;
+}
