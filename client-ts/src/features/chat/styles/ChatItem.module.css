@@ -1,8 +1,9 @@
 .chatItem {
   padding: 0.6rem;
   cursor: pointer;
-  border-bottom: 1px solid #373f47;
-  background-color: #20282e;
+  /* border-bottom: 1px solid #373f47; */
+  /* background-color: #20282e; */
+  background-color: #202c33;
   color: rgb(136, 138, 138);
   display: flex;
   align-items: center;
@@ -10,7 +11,7 @@
 }
 
 .chatItem:hover {
-  background-color: #232a30;
+  background-color: #161d22;
 }
 
 .chatItem img {

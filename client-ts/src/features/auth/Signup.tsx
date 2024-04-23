@@ -42,9 +42,9 @@ const Signup = () => {
 
   return (
     <div className={styles.signup}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.signup_form}>
         <h2>Sign-Up</h2>
-        <div className="form-group">
+        <div className={styles.signup_form_group}>
           <label>Full Name</label>
           <input
             type="text"
@@ -54,7 +54,17 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className={styles.signup_form_group}>
+          <label>Username</label>
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className={styles.signup_form_group}>
           <label>Email</label>
           <input
             type="email"
@@ -64,7 +74,7 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className={styles.signup_form_group}>
           <label>Password</label>
           <input
             type="password"
@@ -74,7 +84,7 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className={styles.signup_form_group}>
           <label>Confirm Password</label>
           <input
             type="password"
@@ -84,7 +94,7 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className={styles.signup_form_group}>
           <label>Gender</label>
           <select
             name="gender"
@@ -98,19 +108,16 @@ const Signup = () => {
             <option value="other">Other</option>
           </select>
         </div>
-        <div className="form-group">
-          <label>Username</label>
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
+
+        <div className={styles.signup_btn_container}>
+          <button
+            type="submit"
+            disabled={isLoading}
+            className={styles.signup_btn}
+          >
+            {isLoading ? "Loading..." : "Register"}
+          </button>
         </div>
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? "Loading..." : "Register"}
-        </button>
         <h5 className="mt-2">
           Already have an account? <Link to="/auth/login">Login</Link>
         </h5>

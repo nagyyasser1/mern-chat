@@ -8,14 +8,14 @@
 }
 
 .usersList::-webkit-scrollbar-track {
-  background: #333; /* color of the track */
+  background: #161d22; /* color of the track */
 }
 
 .usersList::-webkit-scrollbar-thumb {
-  background: whitesmoke; /* color of the thumb */
+  background: #161d22; /* color of the thumb */
   border-radius: 4px;
 }
 
 .usersList::-webkit-scrollbar-thumb:hover {
-  background: #555; /* color of the thumb on hover */
+  background: #161d22; /* color of the thumb on hover */
 }

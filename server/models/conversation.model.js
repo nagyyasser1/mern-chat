@@ -24,20 +24,18 @@ conversationSchema.pre("find", function (next) {
     path: "participants",
     select: { password: 0, createdAt: 0, updatedAt: 0, gender: 0, fullName: 0 },
   });
-  // this.sort({ updatedAt: -1 }); // Sort by latest update (assuming timestamps represent message updates)
   this.populate({
     path: "messages",
-    options: { sort: { updatedAt: -1 }, limit: 1 }, // Populate only the last message
+    options: { sort: { updatedAt: -1 }, limit: 1 },
   });
   next();
 });
 
 conversationSchema.pre("findOne", function (next) {
   this.populate("participants");
-  this.sort({ updatedAt: -1 }); // Sort by latest update (assuming timestamps represent message updates)
+  this.sort({ updatedAt: -1 });
   this.populate({
     path: "messages",
-    // options: { sort: { updatedAt: 1 } },
   });
   next();
 });

@@ -1,8 +1,7 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect } from "react";
 import { socket } from "../../socket";
 import { selectChats, setChats, addNewChat } from "./chatSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-
 import styles from "./styles/ChatHistory.module.css";
 import ChatItem from "./ChatItem";
 import { shallowEqual } from "react-redux";
@@ -10,41 +9,26 @@ import { shallowEqual } from "react-redux";
 const ChatItemMemo = memo(ChatItem);
 
 const ChatHistory = () => {
-  const [isConnected, setIsConnected] = useState(socket.connected);
-
   const chats = useAppSelector(selectChats, shallowEqual);
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    function onConnect() {
-      setIsConnected(true);
-    }
-
-    function onDisconnect() {
-      setIsConnected(false);
-    }
-
-    socket.on("connect", onConnect);
-    socket.on("disconnect", onDisconnect);
+    socket.emit("getChatList");
     socket.on("chatlist", (chats: any) => {
-      dispatch(setChats(chats));
+      dispatch(setChats(chats.reverse()));
     });
     socket.on("newChat", (data: any) => {
       dispatch(addNewChat(data));
     });
 
     return () => {
-      socket.off("connect", onConnect);
+      socket.off("getChatList");
       socket.off("chatlist");
       socket.off("newChat");
-      socket.off("disconnect", onDisconnect);
     };
-  }, []);
+  }, [socket.id]);
 
-  if (!isConnected) {
-    return <p>Connecting ... to socket.io !</p>;
-  }
   return (
     <ul className={styles.chatHistory}>
       {chats?.map((chat) => {

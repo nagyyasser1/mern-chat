@@ -63,10 +63,10 @@ const Login = () => {
 
   return (
     <div className={styles.login}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.login_form}>
         <h2>Login</h2>
 
-        <div className="form-group">
+        <div className={styles.login_form_group}>
           <label>Username</label>
           <input
             type="text"
@@ -76,7 +76,7 @@ const Login = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className={styles.login_form_group}>
           <label>Password</label>
           <input
             type="password"
@@ -86,11 +86,20 @@ const Login = () => {
             required
           />
         </div>
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? "Loading..." : "Login"}
-        </button>
-        <h5 className="mt-2">
-          Don't have an account? <Link to="/auth/signup">Sign Up </Link>
+        <div className={styles.login_btn_container}>
+          <button
+            type="submit"
+            disabled={isLoading}
+            className={styles.login_btn}
+          >
+            {isLoading ? "Loading..." : "Login"}
+          </button>
+        </div>
+        <h5>
+          Don't have an account?{" "}
+          <Link to="/auth/signup" className={styles.signup_link}>
+            Sign Up{" "}
+          </Link>
         </h5>
         {error && <p className="error-message">Login failed</p>}
       </form>

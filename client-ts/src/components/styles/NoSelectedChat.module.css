@@ -1,0 +1,41 @@
+.noSelectedChat {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2rem;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.noSelectedChat_menuImg_container {
+  display: none;
+}
+
+.noSelectedChat_menuImg_container img {
+  height: 40px;
+  cursor: pointer;
+}
+
+.noSelectedChat_header {
+  font-size: 2rem;
+  color: rgb(218, 223, 224);
+}
+
+.noSelectedChat_header h1 {
+  color: #075e54;
+}
+.noSelectedChat_content p {
+  color: rgb(183, 181, 181);
+  line-height: 3rem;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 740px) {
+  .noSelectedChat_menuImg_container {
+    width: 100%;
+    text-align: start;
+    display: block;
+  }
+}

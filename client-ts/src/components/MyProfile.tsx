@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../app/hooks";
 import logoutImg from "../assets/logout.svg";
 import { logout } from "../features/auth/authSlice";
 import styles from "./styles/MyProfile.module.css";
+import { resetChatSlice } from "../features/chat/chatSlice";
 
 const MyProfile = () => {
   const userInfo = useAppSelector((state) => state.auth.userInfo);
@@ -12,10 +13,12 @@ const MyProfile = () => {
   const navigate = useNavigate();
 
   const handleLogOut = () => {
-    navigate("/auth/login");
     localStorage.removeItem("accessToken");
     localStorage.removeItem("userInfo");
+    dispatch(resetChatSlice());
     dispatch(logout());
+    window.location.reload();
+    navigate("/auth/login");
   };
 
   return (

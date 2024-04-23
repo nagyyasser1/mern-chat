@@ -18,6 +18,7 @@ const io = new Server(server, {
 // Socket.IO integration
 io.use((socket, next) => {
   const token =
+    socket.handshake.auth.token ||
     socket.handshake.headers.authorization?.split(" ")[1] ||
     socket.handshake.query.token;
 
@@ -35,26 +36,28 @@ io.on("connection", async (socket) => {
   const userId = socket.decoded.userId;
 
   // Fetch user's conversations and join respective rooms
-  try {
-    Conversation.find({
-      participants: { $all: [userId] },
-    })
-      .then((conversations) => {
-        conversations.forEach((conversation) => {
-          socket.join(conversation._id.toString());
-          socket.broadcast
-            .to(conversation._id.toString())
-            .emit("userStatus", { userId, status: "online" });
-        });
-
-        socket.emit("chatlist", conversations);
+  socket.on("getChatList", () => {
+    try {
+      Conversation.find({
+        participants: { $all: [userId] },
       })
-      .catch((error) => {
-        console.error(error);
-      });
-  } catch (error) {
-    console.error("Error fetching conversations:", error);
-  }
+        .then((conversations) => {
+          conversations.forEach((conversation) => {
+            socket.join(conversation._id.toString());
+            socket.broadcast
+              .to(conversation._id.toString())
+              .emit("userStatus", { userId, status: "online" });
+          });
+
+          socket.emit("chatlist", conversations);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } catch (error) {
+      console.error("Error fetching conversations:", error);
+    }
+  });
 
   // Get chat by id
   socket.on("getChat", async (chatId) => {

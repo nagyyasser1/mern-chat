@@ -18,7 +18,7 @@ const ChatItem = ({ chat }: { chat: Chat }) => {
     // Emit "getChat" event with chat ID or other relevant data
     socket.emit("getChat", chat._id);
 
-    socket.on("retrievedChat", (retrievedChat) => {
+    socket.on("retrievedChat", (retrievedChat: any) => {
       // Update state with retrieved chat data
       dispatch(setSelectedChat(retrievedChat));
     });

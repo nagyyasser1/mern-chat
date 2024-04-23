@@ -53,7 +53,7 @@ export const chatSlice = createSlice({
       state.chats = action.payload;
     },
     addNewChat(state, action: PayloadAction<Chat>) {
-      state.chats.push(action.payload);
+      state.chats.unshift(action.payload);
     },
     setSelectedChat(state, action: PayloadAction<Chat>) {
       state.selectedChat = action.payload;
@@ -89,6 +89,17 @@ export const chatSlice = createSlice({
         state.chats[chatIndex].lastMessage = message.message;
       }
     },
+    resetChatSlice(state) {
+      state.chats = [];
+      state.selectedChat = {
+        _id: "",
+        messages: [],
+        participants: [],
+        lastMessage: "",
+        createdAt: "",
+        updatedAt: "",
+      };
+    },
   },
 });
 
@@ -97,6 +108,14 @@ export const selectedChatMessages = (state: RootState) =>
   state.chats.selectedChat.messages;
 export const selectedChatParticipants = (state: RootState) =>
   state.chats.selectedChat.participants;
+export const isThereSelectedChat = (state: RootState) => {
+  const selectedChat = state.chats.selectedChat;
+
+  if (selectedChat.participants.length <= 0) {
+    return false;
+  }
+  return true;
+};
 
 export const {
   setChats,
@@ -105,6 +124,7 @@ export const {
   addMessage,
   createNewChat,
   addMessageToChatList,
+  resetChatSlice,
 } = chatSlice.actions;
 
 export default chatSlice.reducer;
